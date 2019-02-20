@@ -37,7 +37,7 @@ class Notice
 	 */
 	static public function _Dump( $notice )
 	{
-		switch( $mime = \Env::Mime() ?? 'text/html' ){
+		switch( \Env::Mime() ?? 'text/html' ){
 			case 'text/html':
 				//	Escape is done with self::Shutdown().
 				//	$notice = Escape($notice);
@@ -45,8 +45,11 @@ class Notice
 				break;
 
 			case 'text/css':
+				echo "/* {$notice['message']} */\n";
+				break;
+
 			case 'text/javascript':
-				echo "/* {$notice['message']} */".PHP_EOL;
+				printf("console.error('%s');\n", str_replace("'", "\'", Decode($notice['message'])));
 				break;
 
 			default:
@@ -107,9 +110,7 @@ class Notice
 		$mail->To($to);
 		$mail->Subject($subject);
 		$mail->Content($content, 'text/html');
-		if(!$io = $mail->Send() ){
-			return;
-		}
+		$mail->Send();
 	}
 
 	/** Callback of app shutdown.
