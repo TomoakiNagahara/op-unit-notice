@@ -8,6 +8,13 @@
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright 2016 (C) Tomoaki Nagahara All right reserved.
  */
+
+ /** namespace
+ *
+ * @creation  2019-03-17
+ */
+namespace OP;
+
 //	...
 if( false ){
 	$notice = null;
@@ -17,14 +24,16 @@ if( false ){
 include_once(__DIR__.'/notice.inc.php');
 
 //	Timestamp
-$time_app	 = Time::Datetime();
-$time_std	 = date('Y-m-d H:i:s');
-$time_gmt	 = gmdate('Y-m-d H:i:s');
+$timezone  = date_default_timezone_get();
+$time_app  = Env::Timestamp();
+$time_std  =   date(_OP_DATE_TIME_);
+$time_gmt  = gmdate(_OP_DATE_TIME_);
 $timestamp = $time_std;
 
 //	GMT
 if( $time_std !== $time_gmt ){
-	$timestamp .= "<i>(GMT: $time_gmt)</i>";
+	$timestamp .= " {$timezone}";
+	$timestamp .= " <i>(GMT: $time_gmt)</i>";
 }
 
 //	Frozen time
@@ -33,16 +42,16 @@ if( $time_std !== $time_app ){
 }
 
 //	Information of Visitor.
-$ip			 = ifset($_SERVER['REMOTE_ADDR']    );
+$ip			 = $_SERVER['REMOTE_ADDR']     ?? null;
 $host		 = gethostbyaddr($ip);
 $visitor	 = "$host ($ip)";
-$ua			 = ifset($_SERVER['HTTP_USER_AGENT']);
-$referer	 = ifset($_SERVER['HTTP_REFERER']   );
+$ua			 = $_SERVER['HTTP_USER_AGENT'] ?? null;
+$referer	 = $_SERVER['HTTP_REFERER']    ?? null;
 
 //	Information of Server.
-$scheme		 = ifset($_SERVER['HTTPS']) ? 'https':'http';
-$host		 = ifset($_SERVER['HTTP_HOST']      );
-$url		 = ifset($_SERVER['REQUEST_URI']    );
+$scheme		 =($_SERVER['HTTPS'] ?? null)  ? 'http':'https';
+$host		 = $_SERVER['HTTP_HOST']       ?? null;
+$url		 = $_SERVER['REQUEST_URI']     ?? null;
 $url		 = $scheme .'://'. $host . $url;
 
 ?>
@@ -71,5 +80,5 @@ $url		 = $scheme .'://'. $host . $url;
 		<tr><th> Referer	 </th><td> <?= $referer ?>	 <td></tr>
 	</table>
 	<hr/>
-	<?php _backtrace(ifset($notice['backtrace'], [])) ?>
+	<?php _backtrace($notice['backtrace'] ?? []) ?>
 </div>
