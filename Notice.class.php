@@ -15,6 +15,13 @@
  */
 namespace OP\UNIT;
 
+/** Used class
+ *
+ */
+use OP\Env;
+use function OP\Decode;
+use function OP\CompressPath;
+
 /**
  * Notice
  *
@@ -24,36 +31,77 @@ namespace OP\UNIT;
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright Tomoaki Nagahara All right reserved.
  */
-class Notice
+class Notice implements \OP\IF_UNIT
 {
 	/** trait.
 	 *
 	 */
-	use \OP_CORE, \OP_SESSION;
+	use \OP\OP_CORE, \OP\OP_UNIT;
+
+	/** Callback of app shutdown.
+	 *
+	 */
+	function Auto()
+	{
+		//	...
+		while( $notice = \OP\Notice::Get() ){
+			//	...
+			if( Env::isAdmin() ){
+				$this->Dump($notice);
+			}else{
+				$this->Mail($notice);
+			};
+		};
+	}
 
 	/** Display to dump of notice.
 	 *
 	 * @param array $notice
 	 */
-	static public function _Dump( $notice )
+	function Dump( $notice )
 	{
-		switch( \Env::Mime() ?? 'text/html' ){
+		//	...
+		switch( Env::Mime() ?? 'text/html' ){
 			case 'text/html':
 				//	Escape is done with self::Shutdown().
 				//	$notice = Escape($notice);
-				Json($notice, 'OP_NOTICE');
+				\OP\Json($notice, 'OP_NOTICE');
 				break;
 
 			case 'text/css':
-				echo "/* {$notice['message']} */\n";
+				echo "/* {$notice['message']} */".PHP_EOL;
 				break;
 
 			case 'text/javascript':
-				printf("console.error('%s');\n", str_replace("'", "\'", Decode($notice['message'])));
+				/*
+				printf("console.error('%s');\n", str_replace("'", "\'", \OP\Decode($notice['message'].', '.$notice['backtrace'][0]['file'].' #'.$notice['backtrace'][0]['line'])));
+				*/
+
+				//	...
+				if(!$file = $notice['backtrace'][0]['file'] ?? null ){
+					$file = $notice['backtrace'][1]['file'] ?? null;
+				};
+
+				//	...
+				if(!$line = $notice['backtrace'][0]['line'] ?? null ){
+					$line = $notice['backtrace'][1]['line'] ?? null;
+				};
+
+				//	...
+				$file = CompressPath($file);
+
+				//	...
+				$message = Decode($notice['message']);
+				$message = str_replace("'", "\'",$message);
+				$message = str_replace('"', '\"',$message);
+
+				//	...
+				echo "console.error('{$file} #{$line} {$message}');".PHP_EOL;
 				break;
 
 			default:
 				echo PHP_EOL.$notice['message'].PHP_EOL;
+				print_r($notice);
 		}
 	}
 
@@ -61,7 +109,7 @@ class Notice
 	 *
 	 * @param array $notice
 	 */
-	static public function _Mail( $notice )
+	function Mail( $notice )
 	{
 		static $to, $from, $file_path;
 
@@ -69,13 +117,13 @@ class Notice
 		if( !$to ){
 
 			//	...
-			if(!$to = \Env::Get(\Env::_ADMIN_MAIL_) ){
+			if(!$to = Env::Get(Env::_ADMIN_MAIL_) ){
 				echo '<p class="error">Has not been set admin mail address.</p>'.PHP_EOL;
 				return;
 			}
 
 			//	...
-			if(!$from = \Env::Get(\Env::_MAIL_FROM_) ){
+			if(!$from = Env::Get(Env::_MAIL_FROM_) ){
 				$from = $to;
 			}
 
@@ -105,44 +153,11 @@ class Notice
 		$subject = Decode($notice['message']);
 
 		//	...
-		$mail = new \EMail();
+		$mail = new \OP\EMail();
 		$mail->From($from);
 		$mail->To($to);
 		$mail->Subject($subject);
 		$mail->Content($content, 'text/html');
 		$mail->Send();
-	}
-
-	/** Callback of app shutdown.
-	 *
-	 */
-	static function Shutdown()
-	{
-		//	...
-		try {
-			//	...
-			$is_admin = \Env::isAdmin();
-
-			//	...
-			if( $is_admin and \Unit::Load('webpack') ){
-				//	...
-				\OP\UNIT\WebPack::Js(__DIR__.'/notice');
-
-				//	...
-				\OP\UNIT\WebPack::Css(__DIR__.'/notice');
-			}
-
-			//	...
-			while( $notice = \Notice::Get() ){
-				//	...
-				if( $is_admin ){
-					self::_Dump($notice);
-				}else{
-					self::_Mail($notice);
-				}
-			}
-		} catch ( \Throwable $e ) {
-			echo '<p>'.$e->GetMessage().'</p>'.PHP_EOL;
-		}
 	}
 }

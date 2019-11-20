@@ -11,17 +11,23 @@
  * @copyright 2016 (C) Tomoaki Nagahara All right reserved.
  */
 
+/** namespace
+ *
+ * @creation  2019-03-17
+ */
+namespace OP;
+
 //	Rendering backtrace.
 function _backtrace($backtraces){
 	print '<table>';
 	foreach( $backtraces as $backtrace ){
 		//	...
-		$file = ifset($backtrace['file']);
-		$line = ifset($backtrace['line']);
-		$func = ifset($backtrace['function']);
-		$class= ifset($backtrace['class']);
-		$type = ifset($backtrace['type']);
-		$args = ifset($backtrace['args']);
+		$file = $backtrace['file']     ?? null;
+		$line = $backtrace['line']     ?? null;
+		$func = $backtrace['function'] ?? null;
+		$class= $backtrace['class']    ?? null;
+		$type = $backtrace['type']     ?? null;
+		$args = $backtrace['args']     ?? null;
 
 		//	...
 		$file = CompressPath($file);
@@ -63,7 +69,7 @@ function _arg($arg){
 			break;
 
 		case 'string':
-			$reslut = '"'.Escape($arg).'"';
+			$reslut = '"'.Encode($arg).'"';
 			break;
 
 		case 'array':
