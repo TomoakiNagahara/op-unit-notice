@@ -1,10 +1,10 @@
 <?php
 /**
- * Notice.class.php
+ * unit-notice:/Notice.class.php
  *
- * @creation  2016-11-17
+ * @created   2016-11-17
  * @version   1.0
- * @package   core
+ * @package   unit-notice
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright Tomoaki Nagahara All right reserved.
  */
@@ -22,10 +22,9 @@ use OP\Env;
 use function OP\Decode;
 use function OP\CompressPath;
 
-/**
- * Notice
+/** Notice
  *
- * @creation  2016-11-17
+ * @created   2016-11-17
  * @version   1.0
  * @package   core
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
