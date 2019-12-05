@@ -93,6 +93,7 @@ class Notice implements \OP\IF_UNIT
 				$message = Decode($notice['message']);
 				$message = str_replace("'", "\'",$message);
 				$message = str_replace('"', '\"',$message);
+				$message = str_replace("\n",'\n',$message);
 
 				//	...
 				echo "console.error('{$file} #{$line} {$message}');".PHP_EOL;
