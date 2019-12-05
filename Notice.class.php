@@ -57,7 +57,7 @@ class Notice implements \OP\IF_UNIT
 	 *
 	 * @param array $notice
 	 */
-	function Dump( $notice )
+	static function Dump( $notice )
 	{
 		//	...
 		switch( Env::Mime() ?? 'text/html' ){
