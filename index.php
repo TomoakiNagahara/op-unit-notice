@@ -1,17 +1,17 @@
 <?php
 /**
- * unit-notice:index.php
+ * unit-notice:/index.php
  *
- * @creation  2018-04-13
+ * @created   2018-04-13
  * @version   1.0
- * @package   unit-test
+ * @package   unit-notice
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright Tomoaki Nagahara All right reserved.
  */
 
 /** namespace
  *
- * @creation  2019-02-22
+ * @created   2019-02-22
  */
 namespace OP;
 

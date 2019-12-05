@@ -1,23 +1,24 @@
 <?php
 /**
- * core:/Template/Developer/Sendmail.inc.php
+ * unit-notice:/mail/notice.inc.php
  *
- * Use for core:/Template/Developer/Sendmail.phtml
- *
- * @creation  2016-11-30
+ * @created   2016-11-30
  * @version   1.0
- * @package   core
+ * @package   unit-notice
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright 2016 (C) Tomoaki Nagahara All right reserved.
  */
 
 /** namespace
  *
- * @creation  2019-03-17
+ * @created   2019-03-17
  */
 namespace OP;
 
-//	Rendering backtrace.
+/** Print table of backtrace.
+ *
+ * @param array $backtraces
+ */
 function _backtrace($backtraces){
 	print '<table>';
 	foreach( $backtraces as $backtrace ){
@@ -46,7 +47,11 @@ function _backtrace($backtraces){
 	print '</table>';
 }
 
-//	Serialize arguments.
+/** Serialize arguments.
+ *
+ * @param  array  $args
+ * @return string
+ */
 function _args($args){
 	$join = [];
 	if( $args ){
@@ -57,7 +62,11 @@ function _args($args){
 	return join(', ', $join);
 }
 
-//	Get each value.
+/** Adjust argument value from type.
+ *
+ * @param  mixed  $arg
+ * @return string
+ */
 function _arg($arg){
 	switch( $type = gettype($arg) ){
 		case 'boolean':
@@ -73,22 +82,11 @@ function _arg($arg){
 			break;
 
 		case 'array':
-		//	$reslut = '['._args($arg).']';
 			$reslut = 'array';
 			break;
 
 		case 'object':
 			$reslut = 'object';
-
-			/*
-			$name = get_class($arg);
-			$prop  = [];
-			foreach( $arg as $key => $val ){
-				$prop[] = $key.'->'._arg($val);
-			}
-			$reslut = "{$name}{".join(', ',$prop)."}";
-			*/
-
 			break;
 
 		default:
