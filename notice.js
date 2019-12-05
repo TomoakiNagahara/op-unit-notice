@@ -1,9 +1,9 @@
 /**
- * app-webpack-js:/notice.js
+ * unit-notice:/notice.js
  *
- * @creation  2017-07-28
+ * @created   2017-07-28
  * @version   1.0
- * @package   app-webpack-js
+ * @package   unit-notice
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright Tomoaki Nagahara All right reserved.
  */

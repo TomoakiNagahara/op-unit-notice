@@ -1,15 +1,11 @@
 /**
- * app-webpack-css:/notice.css
+ * unit-notice:/notice.css
  *
- * @creation  2017-07-31
+ * @created   2017-07-31
  * @version   1.0
- * @package   app-skeleton
+ * @package   unit-notice
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright Tomoaki Nagahara All right reserved.
- */
-
-/** FOR FOOTER NOTICE
- *
  */
 
 div.OP_NOTICE {
