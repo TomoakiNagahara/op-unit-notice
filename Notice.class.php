@@ -46,63 +46,12 @@ class Notice implements \OP\IF_UNIT
 		while( $notice = \OP\Notice::Get() ){
 			//	...
 			if( Env::isAdmin() ){
-				$this->Dump($notice);
+				require_once(__DIR__.'/function/dump.php');
+				NOTICE\FUNCTIONS\Dump($notice);
 			}else{
 				$this->Mail($notice);
 			};
 		};
-	}
-
-	/** Display to dump of notice.
-	 *
-	 * @param array $notice
-	 */
-	static function Dump( $notice )
-	{
-		//	...
-		switch( Env::Mime() ?? 'text/html' ){
-			case 'text/html':
-				//	Escape is done with self::Shutdown().
-				//	$notice = Escape($notice);
-				\OP\Json($notice, 'OP_NOTICE');
-				break;
-
-			case 'text/css':
-				echo "/* {$notice['message']} */".PHP_EOL;
-				break;
-
-			case 'text/javascript':
-				/*
-				printf("console.error('%s');\n", str_replace("'", "\'", \OP\Decode($notice['message'].', '.$notice['backtrace'][0]['file'].' #'.$notice['backtrace'][0]['line'])));
-				*/
-
-				//	...
-				if(!$file = $notice['backtrace'][0]['file'] ?? null ){
-					$file = $notice['backtrace'][1]['file'] ?? null;
-				};
-
-				//	...
-				if(!$line = $notice['backtrace'][0]['line'] ?? null ){
-					$line = $notice['backtrace'][1]['line'] ?? null;
-				};
-
-				//	...
-				$file = CompressPath($file);
-
-				//	...
-				$message = Decode($notice['message']);
-				$message = str_replace("'", "\'",$message);
-				$message = str_replace('"', '\"',$message);
-				$message = str_replace("\n",'\n',$message);
-
-				//	...
-				echo "console.error('{$file} #{$line} {$message}');".PHP_EOL;
-				break;
-
-			default:
-				echo PHP_EOL.$notice['message'].PHP_EOL;
-				print_r($notice);
-		}
 	}
 
 	/** Send email of notice.
