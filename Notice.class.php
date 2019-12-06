@@ -49,64 +49,9 @@ class Notice implements \OP\IF_UNIT
 				require_once(__DIR__.'/function/dump.php');
 				NOTICE\FUNCTIONS\Dump($notice);
 			}else{
-				$this->Mail($notice);
+				require_once(__DIR__.'/function/mail.php');
+				NOTICE\FUNCTIONS\Mail($notice);
 			};
 		};
-	}
-
-	/** Send email of notice.
-	 *
-	 * @param array $notice
-	 */
-	function Mail( $notice )
-	{
-		static $to, $from, $file_path;
-
-		//	...
-		if( !$to ){
-
-			//	...
-			if(!$to = Env::Get(Env::_ADMIN_MAIL_) ){
-				echo '<p class="error">Has not been set admin mail address.</p>'.PHP_EOL;
-				return;
-			}
-
-			//	...
-			if(!$from = Env::Get(Env::_MAIL_FROM_) ){
-				$from = $to;
-			}
-
-			//	...
-			$file_path = __DIR__.'/mail/notice.phtml';
-
-			//	...
-			if( file_exists($file_path) === false ){
-				print "<p class=\"error\">Does not file exists. ($file_path)</p>";
-				return;
-			}
-		}
-
-		//	...
-		if(!ob_start()){
-			echo '<p>"ob_start" was failed. (Notice::Shutdown)</p>'.PHP_EOL;
-			return;
-		}
-
-		//	...
-		include($file_path);
-
-		//	...
-		$content = ob_get_clean();
-
-		//	...
-		$subject = Decode($notice['message']);
-
-		//	...
-		$mail = new \OP\EMail();
-		$mail->From($from);
-		$mail->To($to);
-		$mail->Subject($subject);
-		$mail->Content($content, 'text/html');
-		$mail->Send();
 	}
 }
