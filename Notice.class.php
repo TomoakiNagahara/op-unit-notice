@@ -96,7 +96,11 @@ class Notice implements \OP\IF_UNIT
 				$message = str_replace("\n",'\n',$message);
 
 				//	...
+				$json = json_encode($notice['backtrace']);
+
+				//	...
 				echo "console.error('{$file} #{$line} {$message}');".PHP_EOL;
+				echo "console.log('for debug backtrace', $json);".PHP_EOL;
 				break;
 
 			default:
