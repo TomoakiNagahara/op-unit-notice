@@ -64,7 +64,11 @@ function Dump( $notice )
 			$message = str_replace("\n",'\n',$message);
 
 			//	...
+			$json = json_encode($notice['backtrace']);
+
+			//	...
 			echo "console.error('{$file} #{$line} {$message}');".PHP_EOL;
+			echo "console.log($json)";
 			break;
 
 		default:
