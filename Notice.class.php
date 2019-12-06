@@ -72,10 +72,6 @@ class Notice implements \OP\IF_UNIT
 				break;
 
 			case 'text/javascript':
-				/*
-				printf("console.error('%s');\n", str_replace("'", "\'", \OP\Decode($notice['message'].', '.$notice['backtrace'][0]['file'].' #'.$notice['backtrace'][0]['line'])));
-				*/
-
 				//	...
 				if(!$file = $notice['backtrace'][0]['file'] ?? null ){
 					$file = $notice['backtrace'][1]['file'] ?? null;
