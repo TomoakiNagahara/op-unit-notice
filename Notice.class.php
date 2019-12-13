@@ -18,7 +18,11 @@ namespace OP\UNIT;
 /** Used class
  *
  */
+use OP\OP_CORE;
+use OP\OP_UNIT;
+use OP\IF_UNIT;
 use OP\Env;
+use function OP\Json;
 use function OP\Decode;
 use function OP\CompressPath;
 
@@ -30,12 +34,12 @@ use function OP\CompressPath;
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright Tomoaki Nagahara All right reserved.
  */
-class Notice implements \OP\IF_UNIT
+class Notice implements IF_UNIT
 {
 	/** trait.
 	 *
 	 */
-	use \OP\OP_CORE, \OP\OP_UNIT;
+	use OP_CORE, OP_UNIT;
 
 	/** Callback of app shutdown.
 	 *
@@ -64,7 +68,7 @@ class Notice implements \OP\IF_UNIT
 			case 'text/html':
 				//	Escape is done with self::Shutdown().
 				//	$notice = Escape($notice);
-				\OP\Json($notice, 'OP_NOTICE');
+				Json($notice, 'OP_NOTICE');
 				break;
 
 			case 'text/css':
