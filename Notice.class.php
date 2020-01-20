@@ -90,6 +90,7 @@ class Notice implements \OP\IF_UNIT
 				$message = str_replace("'", "\'",$message);
 				$message = str_replace('"', '\"',$message);
 				$message = str_replace("\n",'\n',$message);
+				$message = str_replace('\\', '\\\\',$message);
 
 				//	...
 				$json = json_encode($notice['backtrace']);
