@@ -120,16 +120,22 @@ class Notice implements IF_UNIT
 
 		//	...
 		if( !$to ){
+			//	...
+			$admin = Config::Get('admin');
 
 			//	...
-			if(!$to = Env::Get(Env::_ADMIN_MAIL_) ){
+			$to   = $admin[Env::_ADMIN_MAIL_] ?? null;
+			$from = $admin[Env::_MAIL_FROM_ ] ?? null;
+
+			//	...
+			if(!$to ){
 				echo '<p class="error">Has not been set admin mail address.</p>'.PHP_EOL;
 				return;
 			}
 
 			//	...
-			if(!$from = Env::Get(Env::_MAIL_FROM_) ){
-				$from = $to;
+			if(!$from ){
+				$from = EMail::GetLocalAddress();
 			}
 
 			//	...
