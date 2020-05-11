@@ -70,27 +70,38 @@ function _args($args){
 function _arg($arg){
 	switch( $type = gettype($arg) ){
 		case 'boolean':
-			$reslut = $arg ? 'true': 'false';
+			$result = $arg ? 'true': 'false';
 			break;
 
 		case 'double':
-			$reslut = $arg;
+			$result = $arg;
 			break;
 
 		case 'string':
-			$reslut = '"'.Encode($arg).'"';
+			$result = '"'.Encode($arg).'"';
 			break;
 
 		case 'array':
-			$reslut = 'array';
+		//	$result = '['._args($arg).']';
+			$result = 'array';
 			break;
 
 		case 'object':
-			$reslut = 'object';
+			$result = 'object';
+
+			/*
+			$name = get_class($arg);
+			$prop  = [];
+			foreach( $arg as $key => $val ){
+				$prop[] = $key.'->'._arg($val);
+			}
+			$result = "{$name}{".join(', ',$prop)."}";
+			*/
+
 			break;
 
 		default:
-			$reslut = $type;
+			$result = $type;
 	}
-	return $reslut;
+	return $result;
 }
