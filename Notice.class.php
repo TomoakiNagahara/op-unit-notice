@@ -22,7 +22,6 @@ use OP\OP_CORE;
 use OP\OP_UNIT;
 use OP\IF_UNIT;
 use OP\Env;
-use function OP\Json;
 use function OP\Decode;
 use function OP\CompressPath;
 
@@ -50,125 +49,12 @@ class Notice implements IF_UNIT
 		while( $notice = \OP\Notice::Get() ){
 			//	...
 			if( Env::isAdmin() ){
-				$this->Dump($notice);
+				require_once(__DIR__.'/function/dump.php');
+				NOTICE\FUNCTIONS\Dump($notice);
 			}else{
-				$this->Mail($notice);
+				require_once(__DIR__.'/function/mail.php');
+				NOTICE\FUNCTIONS\Mail($notice);
 			};
 		};
-	}
-
-	/** Display to dump of notice.
-	 *
-	 * @param array $notice
-	 */
-	static function Dump( $notice )
-	{
-		//	...
-		switch( Env::Mime() ?? 'text/html' ){
-			case 'text/html':
-				//	Escape is done with self::Shutdown().
-				//	$notice = Escape($notice);
-				Json($notice, 'OP_NOTICE');
-				break;
-
-			case 'text/css':
-				echo "/* {$notice['message']} */".PHP_EOL;
-				break;
-
-			case 'text/javascript':
-				//	...
-				if(!$file = $notice['backtrace'][0]['file'] ?? null ){
-					$file = $notice['backtrace'][1]['file'] ?? null;
-				};
-
-				//	...
-				if(!$line = $notice['backtrace'][0]['line'] ?? null ){
-					$line = $notice['backtrace'][1]['line'] ?? null;
-				};
-
-				//	...
-				$file = CompressPath($file);
-
-				//	...
-				$message = Decode($notice['message']);
-				$message = str_replace("'", "\'",$message);
-				$message = str_replace('"', '\"',$message);
-				$message = str_replace("\n",'\n',$message);
-				$message = str_replace('\\', '\\\\',$message);
-
-				//	...
-				$json = json_encode($notice['backtrace']);
-
-				//	...
-				echo "console.error('{$file} #{$line} {$message}');".PHP_EOL;
-				echo "console.log('for debug backtrace', $json);".PHP_EOL;
-				break;
-
-			default:
-				echo PHP_EOL.$notice['message'].PHP_EOL;
-				print_r($notice);
-		}
-	}
-
-	/** Send email of notice.
-	 *
-	 * @param array $notice
-	 */
-	function Mail( $notice )
-	{
-		static $to, $from, $file_path;
-
-		//	...
-		if( !$to ){
-			//	...
-			$admin = Config::Get('admin');
-
-			//	...
-			$to   = $admin[Env::_ADMIN_MAIL_] ?? null;
-			$from = $admin[Env::_MAIL_FROM_ ] ?? null;
-
-			//	...
-			if(!$to ){
-				echo '<p class="error">Has not been set admin mail address.</p>'.PHP_EOL;
-				return;
-			}
-
-			//	...
-			if(!$from ){
-				$from = EMail::GetLocalAddress();
-			}
-
-			//	...
-			$file_path = __DIR__.'/mail/notice.phtml';
-
-			//	...
-			if( file_exists($file_path) === false ){
-				print "<p class=\"error\">Does not file exists. ($file_path)</p>";
-				return;
-			}
-		}
-
-		//	...
-		if(!ob_start()){
-			echo '<p>"ob_start" was failed. (Notice::Shutdown)</p>'.PHP_EOL;
-			return;
-		}
-
-		//	...
-		include($file_path);
-
-		//	...
-		$content = ob_get_clean();
-
-		//	...
-		$subject = Decode($notice['message']);
-
-		//	...
-		$mail = new \OP\EMail();
-		$mail->From($from);
-		$mail->To($to);
-		$mail->Subject($subject);
-		$mail->Content($content, 'text/html');
-		$mail->Send();
 	}
 }
