@@ -54,6 +54,12 @@ $host		 = $_SERVER['HTTP_HOST']       ?? null;
 $url		 = $_SERVER['REQUEST_URI']     ?? null;
 $url		 = $scheme .'://'. $host . $url;
 
+//	...
+if(!ob_start()){
+	echo '<p>"ob_start" was failed. (Notice::Shutdown)</p>'.PHP_EOL;
+	return false;
+}
+
 ?>
 <div style="font-size:9pt;">
 	<div style="font-size:120%;">
@@ -82,3 +88,6 @@ $url		 = $scheme .'://'. $host . $url;
 	<hr/>
 	<?php _backtrace($notice['backtrace'] ?? []) ?>
 </div>
+<?php
+//	...
+return ob_get_clean();
