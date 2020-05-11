@@ -61,33 +61,45 @@ if(!ob_start()){
 }
 
 ?>
-<div style="font-size:9pt;">
-	<div style="font-size:120%;">
-		<?php if( $messages = explode("\n", $notice['message']."\n") ): ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title><?php echo $notice['message'] ?></title>
+	<style type="text/css">
+	body * {
+		font-size: 9pt;
+	}
+	.bold {
+		font-weight: bold;
+	}
+	.italic {
+		font-style: italic;
+	}
+	</style>
+</head>
+<body>
+	<div>
+		<?php if( $messages = explode("\n", $notice['message']) ): ?>
 			<?php for($i=0; $i<count($messages); $i++): ?>
 				<?php if( $i === 0 ): ?>
-					<p style="font-weight:bold;"><?= $messages[$i] ?></p>
+					<p class="bold"><?= $messages[$i] ?></p>
 				<?php elseif($messages[$i]): ?>
-					<p style="font-style:italic;"><?= $messages[$i] ?></p>
+					<p class="italic"><?= $messages[$i] ?></p>
 				<?php endif; ?>
 			<?php endfor; ?>
 		<?php endif; ?>
 	</div>
 	<table>
-		<tr><th> Timestamp	 </th><td> <?= $timestamp ?> <td></tr>
-		<tr>
-			<th> Visitor	 </th>
-			<td>
-				<?= $visitor ?><br/>
-				<?= $ua ?>
-			<td>
-		</tr>
-		<tr><th> URL		 </th><td> <?= $url ?>		 <td></tr>
-		<tr><th> Referer	 </th><td> <?= $referer ?>	 <td></tr>
+		<tr><th> Timestamp </th><td><?= $timestamp ?></td></tr>
+		<tr><th> Visitor   </th><td><?= $visitor   ?></td></tr>
+		<tr><th> UserAgent </th><td><?= $ua        ?></td></tr>
+		<tr><th> URL       </th><td><?= $url       ?></td></tr>
+		<tr><th> Referer   </th><td><?= $referer   ?></td></tr>
 	</table>
 	<hr/>
 	<?php _backtrace($notice['backtrace'] ?? []) ?>
-</div>
+</body>
+</html>
 <?php
 //	...
 return ob_get_clean();
