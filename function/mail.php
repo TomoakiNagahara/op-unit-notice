@@ -65,16 +65,9 @@ function Mail( $notice )
 	}
 
 	//	...
-	if(!ob_start()){
-		echo '<p>"ob_start" was failed. (Notice::Shutdown)</p>'.PHP_EOL;
+	if(!$content = include($file_path) ){
 		return;
 	}
-
-	//	...
-	include($file_path);
-
-	//	...
-	$content = ob_get_clean();
 
 	//	...
 	$subject = Decode($notice['message']);
