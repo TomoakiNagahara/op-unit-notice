@@ -55,6 +55,11 @@ $url		 = $_SERVER['REQUEST_URI']     ?? null;
 $url		 = $scheme .'://'. $host . $url;
 
 //	...
+if( $ip === $host ){
+	$_SERVER[_OP_DENY_IP_] = true;
+}
+
+//	...
 if(!ob_start()){
 	echo '<p>"ob_start" was failed. (Notice::Shutdown)</p>'.PHP_EOL;
 	return false;
