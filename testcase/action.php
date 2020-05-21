@@ -1,5 +1,5 @@
 <?php
-/** op-unit-notice:/testcase/sendmail.php
+/** op-unit-notice:/testcase/action.php
  *
  * @creation  2019-04-18
  * @version   1.0

@@ -1,12 +1,13 @@
-/**
- * unit-notice:/notice.css
+<?php
+/** op-unit-notice:/notice.css
  *
  * @created   2017-07-31
  * @version   1.0
- * @package   unit-notice
+ * @package   op-unit-notice
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright Tomoaki Nagahara All right reserved.
  */
+?>
 
 div.OP_NOTICE {
 	font-size: 9pt;
