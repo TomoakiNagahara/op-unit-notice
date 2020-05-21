@@ -1,10 +1,9 @@
 <?php
-/**
- * unit-notice:/index.php
+/** op-unit-notice:/index.php
  *
  * @created   2018-04-13
  * @version   1.0
- * @package   unit-notice
+ * @package   op-unit-notice
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright Tomoaki Nagahara All right reserved.
  */

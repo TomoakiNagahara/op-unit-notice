@@ -1,17 +1,15 @@
 <?php
-/**
- * unit-notice:/function/mail.php
+/** op-unit-notice:/function/mail.php
  *
  * @created   2019-12-05
  * @version   1.0
- * @package   unit-notice
+ * @package   op-unit-notice
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright Tomoaki Nagahara All right reserved.
  */
 
 /** namespace
  *
- * @created   2019-12-05
  */
 namespace OP\UNIT\NOTICE\FUNCTIONS;
 

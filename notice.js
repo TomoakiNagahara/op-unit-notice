@@ -1,12 +1,14 @@
-/**
- * unit-notice:/notice.js
+//<?php
+/** op-unit-notice:/notice.js
  *
  * @created   2017-07-28
  * @version   1.0
- * @package   unit-notice
+ * @package   op-unit-notice
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright Tomoaki Nagahara All right reserved.
  */
+//?>
+
 //	...
 if( $OP === undefined ){
 	var $OP = {};
