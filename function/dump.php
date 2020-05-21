@@ -20,8 +20,6 @@ namespace OP\UNIT\NOTICE\FUNCTIONS;
  */
 use OP\Env;
 use function OP\Json;
-use function OP\Decode;
-use function OP\CompressPath;
 
 /** Display to dump of notice.
  *
@@ -44,32 +42,7 @@ function Dump( $notice )
 			break;
 
 		case 'text/javascript':
-			//	...
-			if(!$file = $notice['backtrace'][0]['file'] ?? null ){
-				$file = $notice['backtrace'][1]['file'] ?? null;
-			};
-
-			//	...
-			if(!$line = $notice['backtrace'][0]['line'] ?? null ){
-				$line = $notice['backtrace'][1]['line'] ?? null;
-			};
-
-			//	...
-			$file = CompressPath($file);
-
-			//	...
-			$message = Decode($notice['message']);
-			$message = str_replace("'", "\'",$message);
-			$message = str_replace('"', '\"',$message);
-			$message = str_replace("\n",'\n',$message);
-			$message = str_replace("\\",'\\\\',$message);
-
-			//	...
-			$json = json_encode($notice['backtrace']);
-
-			//	...
-			echo "console.error('{$file} #{$line} {$message}');".PHP_EOL;
-			echo "console.log($json)";
+			require(__DIR__.'/dump_text_javascript.inc.php');
 			break;
 
 		default:
