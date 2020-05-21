@@ -14,15 +14,17 @@
  */
 namespace OP;
 
-//	...
-Template('menu.phtml');
+/** use
+ *
+ */
+use function OP\TESTCASE\Auto;
+use function OP\TESTCASE\Menu;
 
 /* @var array args */
 if( false ){ $args = []; };
 
 //	...
-switch( array_shift($args) ){
-	case 'sendmail':
-		Template('sendmail.php', $args);
-		break;
-}
+Menu();
+
+//	...
+Auto($args);
