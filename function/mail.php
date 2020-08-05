@@ -43,6 +43,7 @@ function Mail( $notice )
 
 		//	...
 		if(!$to ){
+			include(__DIR__.'/../../bootstrap/app/config-admin.phtml');
 			echo '<p class="error">Has not been set admin mail address.</p>'.PHP_EOL;
 			return;
 		}
