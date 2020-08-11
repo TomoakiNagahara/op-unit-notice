@@ -29,8 +29,20 @@ use function OP\CompressPath;
  */
 function Mail( $notice )
 {
-	//	...
+	//	Static values.
 	static $to, $from, $file_path;
+
+	//	Convert to json string from hash.
+	$json = json_encode($notice);
+
+	//	Get hash value.
+	$hash = md5($json);
+
+	//	Check if already sent.
+	if( apcu_exists($hash) ){
+		//	Exists if already sent.
+		return;
+	}
 
 	//	...
 	if( !$to ){
@@ -78,4 +90,8 @@ function Mail( $notice )
 	$mail->Subject($subject);
 	$mail->Content($content, 'text/html');
 	$mail->Send();
+
+	//	Avoid sent the same email.
+	$ttl = 60 * 60 * 24;
+	apcu_add($hash, $notice, $ttl);
 }
