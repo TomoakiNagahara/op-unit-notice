@@ -50,7 +50,7 @@ $referer	 = $_SERVER['HTTP_REFERER']    ?? null;
 $blacklist   = null;
 
 //	Information of Server.
-$scheme		 =($_SERVER['HTTPS'] ?? null)  ? 'http':'https';
+$scheme      = $_SERVER['REQUEST_SCHEME']  ?? '(empty)';
 $host		 = $_SERVER['HTTP_HOST']       ?? null;
 $url		 = $_SERVER['REQUEST_URI']     ?? null;
 $url		 = $scheme .'://'. $host . $url;
