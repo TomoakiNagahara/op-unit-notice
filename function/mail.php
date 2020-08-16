@@ -32,11 +32,9 @@ function Mail( $notice )
 	//	Static values.
 	static $to, $from, $file_path;
 
-	//	Convert to json string from hash.
-	$json = json_encode($notice);
-
 	//	Get hash value.
-	$hash = md5($json);
+	$hash = md5($notice['message']);
+	$hash = substr($hash, 0, 10);
 
 	//	Check if already sent.
 	if( apcu_exists($hash) ){
@@ -80,7 +78,7 @@ function Mail( $notice )
 		return;
 	}
 
-	//	...
+	//	Get message.
 	$subject = Decode($notice['message']);
 
 	//	...
@@ -93,5 +91,5 @@ function Mail( $notice )
 
 	//	Avoid sent the same email.
 	$ttl = 60 * 60 * 24;
-	apcu_add($hash, $notice, $ttl);
+	apcu_add($hash, $subject, $ttl);
 }
