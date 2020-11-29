@@ -37,9 +37,11 @@ function Mail( $notice )
 	$hash = substr($hash, 0, 10);
 
 	//	Check if already sent.
-	if( apcu_exists($hash) ){
-		//	Exists if already sent.
-		return;
+	if( function_exists('apcu_exists') ){
+		if( apcu_exists($hash) ){
+			//	Exists if already sent.
+			return;
+		}
 	}
 
 	//	...
@@ -90,6 +92,8 @@ function Mail( $notice )
 	$mail->Send();
 
 	//	Avoid sent the same email.
-	$ttl = 60 * 60 * 24;
-	apcu_add($hash, $subject, $ttl);
+	if( function_exists('apcu_add') ){
+		$ttl = 60 * 60 * 24;
+		apcu_add($hash, $subject, $ttl);
+	}
 }
