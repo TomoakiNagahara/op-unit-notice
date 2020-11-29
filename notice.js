@@ -56,6 +56,7 @@ if( $OP.Path === undefined ){
 		var json  = JSON.parse(div.innerText);
 		var tags = {};
 			tags.count   = document.createElement('span');
+			tags.headline= document.createElement('div');
 			tags.message = document.createElement('div');
 			tags.created = document.createElement('span');
 
@@ -73,12 +74,16 @@ if( $OP.Path === undefined ){
 			me2.innerText = json.message.substr(pos+1, json.message.length -pos -2);
 
 			//	...
+			tags.headline.classList.add('headline');
+			tags.headline.appendChild(me1);
+
+			//	...
 			tags.message.classList.add('message');
-			tags.message.appendChild(me1);
 			tags.message.appendChild(me2);
 
 		//	...
 		var temp = document.createElement('div');
+			temp.appendChild( tags.headline);
 			temp.appendChild( tags.message );
 			temp.appendChild( __backtrace( json.backtrace ) )
 
