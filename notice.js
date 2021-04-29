@@ -142,6 +142,8 @@ if( $OP.Path === undefined ){
 	//	...
 	function __backtrace(json){
 		var table = document.createElement('table');
+			table.classList.add('border');
+			table.classList.add('none');
 		for(var i=0; i<json.length; i++){
 			table.appendChild( __line(json[i]) );
 		}
