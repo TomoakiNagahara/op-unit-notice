@@ -14,12 +14,9 @@
 namespace OP;
 
 //	...
-if(!Env::isHttp() ){
-	Notice::Set("This is plain-text notice test.");
+if( Env::isHttp() ){
 	return;
 }
 
-?>
-<p>Execute the following command in the terminal.</p>
-<pre><code>php asset/app.php asset/testcase/unit/notice/plain-text
-</code></pre>
+//	...
+Notice::Set("This is plain-text notice test.");
