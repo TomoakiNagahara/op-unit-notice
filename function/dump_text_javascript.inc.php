@@ -34,8 +34,10 @@ if(!$line = $notice['backtrace'][0]['line'] ?? null ){
 	$line = $notice['backtrace'][1]['line'] ?? null;
 };
 
+/*
 //	...
 $file = CompressPath($file);
+*/
 
 //	...
 $message = Decode($notice['message']);
