@@ -30,8 +30,10 @@ function _backtrace($backtraces){
 		$type = $backtrace['type']     ?? null;
 		$args = $backtrace['args']     ?? null;
 
+		/*
 		//	...
 		$file = CompressPath($file);
+		*/
 
 		//	...
 		if( isset($type) ){
