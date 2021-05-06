@@ -1,4 +1,4 @@
-<?php
+
 /** op-unit-notice:/notice.css
  *
  * @created   2017-07-31
@@ -7,7 +7,6 @@
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright Tomoaki Nagahara All right reserved.
  */
-?>
 
 div.OP_NOTICE {
 	font-size: 9pt;
@@ -54,9 +53,11 @@ div.OP_NOTICE div.message > p {
 	font-weight: bold;
 }
 
+/*
 div.OP_NOTICE td.file {
 
 }
+*/
 
 div.OP_NOTICE td.line {
 	text-align: right;
