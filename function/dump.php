@@ -36,7 +36,7 @@ function Dump( $notice )
 			break;
 
 		case 'text/css':
-			echo "/* {$notice['message']} */".PHP_EOL;
+			require(__DIR__.'/dump_text_css.inc.php');
 			break;
 
 		case 'text/javascript':
