@@ -16,6 +16,8 @@ namespace OP\UNIT\NOTICE;
 /** use
  *
  */
+use function OP\RootPath;
+use function OP\CompressPath;
 
 /* @var $notice array */
 if( false ){
@@ -23,6 +25,7 @@ if( false ){
 }
 
 //	...
+$app_root= RootPath('app');
 $count   = $notice['count'];
 $created = $notice['created'];
 $message = $notice['message'];
@@ -46,7 +49,14 @@ foreach( $notice['backtrace'] as $i => $trace ){
 //	$object = $trace['object']   ?? null;
 
 	//	...
+	if( $line ){
+		$line = str_pad($line, 3, ' ', STR_PAD_RIGHT);
+	}
+
+	//	...
 	if( $file ){
+		$file = CompressPath($file);
+		$file = str_pad($file, 30, ' ', STR_PAD_RIGHT);
 		echo "{$file} #{$line} ";
 	};
 
@@ -67,6 +77,15 @@ foreach( $notice['backtrace'] as $i => $trace ){
 			case 'string':
 				//	Limit string length.
 				$len = 60;
+
+				//	Omitting to path.
+				if( $arg[0] === '/' ){
+					if( strpos($arg, $app_root) === 0  ){
+						$len = strlen(RootPath('app'));
+						$arg = '...'.substr($arg, $len);
+					}
+				}
+
 				//	If too long.
 				if( mb_strlen($arg) > $len ){
 					//	Rmove \n and \r
