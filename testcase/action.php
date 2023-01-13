@@ -13,18 +13,3 @@
  * @creation  2019-04-18
  */
 namespace OP;
-
-/** use
- *
- */
-use function OP\TESTCASE\Auto;
-use function OP\TESTCASE\Menu;
-
-/* @var array args */
-if( false ){ $args = []; };
-
-//	...
-Menu();
-
-//	...
-Auto($args);
