@@ -51,7 +51,7 @@ function Mail( $notice )
 
 		//	...
 		$to   = $admin[Env::_ADMIN_MAIL_] ?? null;
-		$from = $admin[Env::_MAIL_FROM_ ] ?? null;
+		$from = $admin[Env::_ADMIN_FROM_] ?? null;
 
 		//	...
 		if(!$to ){
