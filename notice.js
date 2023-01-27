@@ -9,44 +9,6 @@
  */
 //?>
 
-/*
-//	...
-if( $OP === undefined ){
-	var $OP = {};
-
-	//	...
-	$OP.Args = function( args ){
-		var span = document.createElement('span');
-			span.innerText = '()';
-
-		//	...
-		console.log(args);
-
-		//	...
-		return span;
-	};
-}
-*/
-
-/*
-//	...
-if( $OP.Path === undefined ){
-	$OP.Path = {};
-	$OP.Path.Compress = function(file){
-		//	...
-		var root = "<?= \OP\RootPath()['doc'] ?>";
-
-		//	...
-		if(!file ){
-			return null;
-		};
-
-		//	...
-		return file.replace(root, '');
-	};
-};
-*/
-
 //	...
 (function(){
 	//	Display the Notice at the bottom of the document.
