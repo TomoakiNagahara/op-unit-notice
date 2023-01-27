@@ -9,6 +9,7 @@
  */
 //?>
 
+/*
 //	...
 if( $OP === undefined ){
 	var $OP = {};
@@ -25,6 +26,7 @@ if( $OP === undefined ){
 		return span;
 	};
 }
+*/
 
 //	...
 if( $OP.Path === undefined ){
