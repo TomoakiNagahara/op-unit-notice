@@ -28,6 +28,7 @@ if( $OP === undefined ){
 }
 */
 
+/*
 //	...
 if( $OP.Path === undefined ){
 	$OP.Path = {};
@@ -44,6 +45,7 @@ if( $OP.Path === undefined ){
 		return file.replace(root, '');
 	};
 };
+*/
 
 //	...
 (function(){
