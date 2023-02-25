@@ -80,7 +80,7 @@ foreach( $notice['backtrace'] as $i => $trace ){
 				$len = 60;
 
 				//	Omitting to path.
-				if( $arg[0] === '/' ){
+				if(($arg[0] ?? null) === '/' ){
 					if( strpos($arg, $app_root) === 0  ){
 						$len = strlen(RootPath('app'));
 						$arg = '.../'.substr($arg, $len);
