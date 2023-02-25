@@ -87,10 +87,11 @@ foreach( $notice['backtrace'] as $i => $trace ){
 					}
 				}
 
+				//	Replace
+				$arg = str_replace(["\r","\n","\t"],['\r','\n','\t'],$arg);
+
 				//	If too long.
 				if( mb_strlen($arg) > $len ){
-					//	Rmove \n and \r
-					$arg = preg_replace('/\n|\r/', '', $arg);
 					//	Turncate string.
 					$arg = mb_substr($arg, 0, 60) . '...';
 				}
