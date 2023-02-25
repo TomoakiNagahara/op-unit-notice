@@ -37,7 +37,8 @@ echo PHP_EOL;
 
 //	...
 foreach( $notice['backtrace'] as $i => $trace ){
-	echo $i . ': ';
+	echo str_pad($i, 2, ' ', STR_PAD_LEFT);
+	echo ': ';
 	//	print_r($trace);
 	$join   = [];
 	$file   = $trace['file']     ?? null;
