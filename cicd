@@ -3,7 +3,7 @@
 /** op-core:/cicd
  *
  * @created    2023-02-11
- * @version    2.0
+ * @version    2.1.1
  * @package    op-core
  * @author     Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright  Tomoaki Nagahara All right reserved.
@@ -25,5 +25,19 @@ $argv2 = $_SERVER['argv'][2] ?? '';
 $argv3 = $_SERVER['argv'][3] ?? '';
 $argv4 = $_SERVER['argv'][4] ?? '';
 $argv5 = $_SERVER['argv'][5] ?? '';
-echo `php ci.php {$argv1} {$argv2} {$argv3} {$argv4} {$argv5}`;
-echo `php cd.php {$argv1} {$argv2} {$argv3} {$argv4} {$argv5}`;
+
+//	...
+foreach( ['ci','cd'] as $cicd ){
+	$output = null;
+	$status = null;
+	$comand = "php {$cicd}.php {$argv1} {$argv2} {$argv3} {$argv4} {$argv5}";
+	exec($comand, $output, $status);
+	//	...
+	if( $output ){
+		echo join("\n", $output)."\n";
+	}
+	//	...
+	if( $status ){
+		exit($status);
+	}
+}
