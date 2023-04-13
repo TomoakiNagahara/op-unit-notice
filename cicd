@@ -3,13 +3,13 @@
 /** op-core:/cicd
  *
  * @created    2023-02-11
- * @version    2.1.1
+ * @version    2.2.0
  * @package    op-core
  * @author     Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright  Tomoaki Nagahara All right reserved.
  */
 
- /** Declare strict
+/** Declare strict
  *
  */
 declare(strict_types=1);
@@ -18,6 +18,12 @@ declare(strict_types=1);
  *
  */
 namespace OP;
+
+//  Inherit the PHP version of the execution source.
+$php = $_SERVER['_'];
+if( $php === './cicd' ){
+    $php = 'php';
+}
 
 //	...
 $argv1 = $_SERVER['argv'][1] ?? '';
@@ -30,7 +36,7 @@ $argv5 = $_SERVER['argv'][5] ?? '';
 foreach( ['ci','cd'] as $cicd ){
 	$output = null;
 	$status = null;
-	$comand = "php {$cicd}.php {$argv1} {$argv2} {$argv3} {$argv4} {$argv5}";
+	$comand = "{$php} {$cicd}.php {$argv1} {$argv2} {$argv3} {$argv4} {$argv5}";
 	exec($comand, $output, $status);
 	//	...
 	if( $output ){
