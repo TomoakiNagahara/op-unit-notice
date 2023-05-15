@@ -64,46 +64,9 @@
 			});
 		};
 
-		//	...
-		setTimeout(function(){
-			__notice(me1.innerText, me2.innerText);
-		}, 1000 * i);
+        //  ...
+        $OP.NoticeWindow(me1.innerText);
 	};
-
-	//	Display the Notice on the upper left of the document.
-	function __notice(message, subtext){
-		//	...
-		console.error(message, subtext);
-
-		//	...
-		var area = document.querySelector('#OP_NOTICE_AREA');
-		if(!area ){
-			//	...
-			area = document.createElement('div');
-			area.id = 'OP_NOTICE_AREA';
-
-			//	...
-			var body = document.querySelector('body');
-				body.insertBefore(area, body.children[0]);
-		}
-
-		//	...
-		var div  = document.createElement('div');
-		var span = document.createElement('span');
-			span.innerText = message;
-
-		//	...
-		div .appendChild(span);
-		area.appendChild(div);
-
-		//	...
-		setTimeout(function(){
-			div.classList.add('hide');
-			setTimeout(function(){
-				area.removeChild(div);
-			}, 1000 * 1);
-		}, 1000 * 3);
-	}
 
 	//	...
 	function __backtrace(json){
