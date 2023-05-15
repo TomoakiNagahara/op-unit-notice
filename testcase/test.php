@@ -14,4 +14,6 @@
 namespace OP;
 
 //  ...
-Notice::Set('This is notice test.');
+Notice::Set('This is notice test1.');
+Notice::Set('This is notice test2.');
+Notice::Set('This is notice test3.');
