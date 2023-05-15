@@ -37,6 +37,7 @@ register_shutdown_function(function(){
 			$webpack = Unit::Instantiate('Webpack');
 			$webpack->Js (__DIR__.'/notice');
 			$webpack->Css(__DIR__.'/notice');
+			$webpack->Js (__DIR__.'/notice_window');
 
 		}catch( \Exception $e ){
 			//	...
