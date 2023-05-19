@@ -38,6 +38,7 @@ register_shutdown_function(function(){
 			$webpack->Js (__DIR__.'/notice');
 			$webpack->Css(__DIR__.'/notice');
 			$webpack->Js (__DIR__.'/notice_window');
+			$webpack->Js (__DIR__.'/notice_console');
 
 		}catch( \Exception $e ){
 			//	...
