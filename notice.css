@@ -169,3 +169,65 @@ span.args > span.arg > span.string > span.meta {
 span.args > span.arg > span.string > span.meta.space {
 	text-decoration: underline;
 }
+
+.OP.Notice {
+    color:            var(--color-text);
+    background-color: var(--color-back);
+    border-color:     var(--color-border);
+    border-style:     solid;
+    border-width:     1px;
+    overflow: scroll;
+}
+
+.OP.Notice .message {
+    border-left:  0.25rem solid var(--color-border);
+    padding-left: 0.25rem;
+}
+
+.OP.Notice .table {
+    margin-top:  0.1rem;
+    margin-left: 0.1rem;
+}
+
+.OP.Notice .table td {
+    padding: 0.1rem;
+    font-size: 80%;
+}
+
+.OP.Notice .table td * {
+    font-size: inherit;
+}
+
+.OP.Notice .table td .args:before {
+    content: "(";
+}
+
+.OP.Notice .table td .args:after {
+    content: ")";
+}
+
+.OP.Notice .table td .args .underline {
+    color: var(--color-link);
+    text-decoration: underline;
+}
+
+.OP.Notice .table td .args .arg:not(:last-child):after {
+    content: ",";
+}
+
+.OP.Notice .table td .args .arg .quote:after {
+    content: "\"";
+}
+
+.OP.Notice .table td .args .arg .quote:before {
+    content: "\"";
+}
+
+.OP.Notice .table td .args .arg.number {
+	position: relative;
+	top: 1px;
+}
+
+.OP.Notice .table td .args .arg.number:first-child {
+	left: 1px;
+}
