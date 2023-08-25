@@ -35,11 +35,11 @@ register_shutdown_function(function(){
 
 			/* @var $webpack \OP\UNIT\WebPack */
 			$webpack = Unit::Instantiate('Webpack');
-			$webpack->Js (__DIR__.'/notice');
+		//	$webpack->Js (__DIR__.'/notice');
 			$webpack->Css(__DIR__.'/notice');
 			$webpack->Js (__DIR__.'/notice_window');
 			$webpack->Js (__DIR__.'/notice_footer');
-			$webpack->Js (__DIR__.'/notice_console');
+		//	$webpack->Js (__DIR__.'/notice_console');
 
 		}catch( \Exception $e ){
 			//	...
