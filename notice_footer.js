@@ -156,6 +156,11 @@
 
         //  ...
         switch(type){
+            case 'boolean':
+                span.innerText = arg;
+                span.classList.add(arg);
+                break;
+
             case 'number':
                 span.innerText = arg;
                 span.classList.remove('underline');
