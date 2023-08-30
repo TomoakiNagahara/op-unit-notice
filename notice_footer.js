@@ -126,7 +126,8 @@
                 span.appendChild(Arg(trace.args[0]));
                 break;
             default:
-                for(let i=0; i<trace.args.length; i++){
+                let length = trace?.args?.length ?? 0;
+                for(let i=0; i<length; i++){
                     span.appendChild( Arg(trace.args[i]) );
                 }
         }
