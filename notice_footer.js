@@ -119,6 +119,11 @@
 
         //  ...
         switch( func ){
+            //  If function is empty.
+            case '':
+                span.classList.remove('args');
+                break;
+
             case 'include':
             case 'require':
             case 'include_once':
