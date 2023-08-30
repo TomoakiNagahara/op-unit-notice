@@ -144,7 +144,7 @@
     //  ...
     function Arg(arg){
         //  ...
-        let type = typeof arg;
+        let type = arg === null ? 'null': typeof arg;
 
         //  ...
         let span = document.createElement('span');
@@ -156,6 +156,10 @@
 
         //  ...
         switch(type){
+
+            case 'null':
+                break;
+
             case 'boolean':
                 span.innerText = arg;
                 span.classList.add(arg);
