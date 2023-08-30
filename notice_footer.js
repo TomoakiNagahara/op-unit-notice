@@ -148,7 +148,7 @@
 
         //  ...
         let span = document.createElement('span');
-            span.classList.add('arg', 'underline', type);
+            span.classList.add('arg', type);
             span.innerText = type;
             span.addEventListener('click', function(){
                 console.log(arg);
@@ -163,7 +163,6 @@
 
             case 'number':
                 span.innerText = arg;
-                span.classList.remove('underline');
                 break;
             case 'string':
                 if(!arg.match(/\n/) ){
@@ -173,10 +172,12 @@
                         quote.innerText = $OP.Path.Compress(arg);
                     //  ...
                     span.innerText = '';
-                    span.classList.remove('underline');
                     span.appendChild(quote);
                 }
                 break;
+
+            default:
+            span.classList.add('underline');
         }
 
         //  ...
