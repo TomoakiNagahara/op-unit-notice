@@ -128,7 +128,8 @@
             case 'require':
             case 'include_once':
             case 'require_once':
-                span.appendChild(Arg(trace.args[0]));
+                let path = (trace?.args?.length ?? 0) ? trace.args[0]: null;
+                span.appendChild(Arg(path));
                 break;
             default:
                 let length = trace?.args?.length ?? 0;
