@@ -91,7 +91,7 @@ div.OP_NOTICE td.function span.args > span.arg > span.string:after {
 #OP_NOTICE_AREA {
 	position: fixed;
 	z-index: 1;
-	opacity: 0.65;
+	opacity: 0.9;
 }
 
 #OP_NOTICE_AREA > * {
