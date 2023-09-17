@@ -18,7 +18,8 @@
     //  ...
     $OP.NoticeFooter = function(){
         //  ...
-        let body = document.getElementsByTagName('body')[0];
+    //  let body = document.getElementsByTagName('body')[0];
+        let body = Area();
 
         //  ...
         document.querySelectorAll('div.OP_NOTICE').forEach(function(div){
@@ -33,7 +34,10 @@
                 section.appendChild( trace   );
                 section.classList.add('OP','Notice');
             //  ...
-            body.appendChild(section);
+            body.prepend(section);
+
+            //  ...
+            Event(message, trace);
 
             //  ...
             div.style.display = 'none';
@@ -76,7 +80,7 @@
         //  ...
         let h1 = document.createElement('h1');
             h1.innerText = json.message;
-            h1.classList.add('message');
+            h1.classList.add('message','cursor','pointer');
 
         //  ...
         return h1;
@@ -87,6 +91,7 @@
         //  ...
         let table = document.createElement('table');
             table.classList.add('table');
+            table.style.display = 'none';
 
         //  ...
         json.backtrace.forEach(function(trace){
