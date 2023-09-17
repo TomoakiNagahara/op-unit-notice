@@ -24,11 +24,13 @@
         document.querySelectorAll('div.OP_NOTICE').forEach(function(div){
             //  ...
             let json = JSON.parse(div.innerText);
-            
+
             //  ...
+            let message = Message(json);
+            let trace   = Trace(json);
             let section = document.createElement('section');
-                section.appendChild( Message(json) );
-                section.appendChild( Trace(json)   );
+                section.appendChild( message );
+                section.appendChild( trace   );
                 section.classList.add('OP','Notice');
             //  ...
             body.appendChild(section);
