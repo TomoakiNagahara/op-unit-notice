@@ -57,6 +57,19 @@
     }
 
     //  ...
+    function Event(message, trace){
+        //  ...
+        message.addEventListener('click', function(){
+            //  ...
+            if( trace.style.display === 'none' ){
+                trace.style.display = '';
+            }else{
+                trace.style.display = 'none';
+            }
+        });
+    }
+
+    //  ...
     function Message(json){
         //  ...
         let h1 = document.createElement('h1');
