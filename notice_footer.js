@@ -39,6 +39,24 @@
     };
 
     //  ...
+    function Area(){
+        //  ...
+        var area = document.querySelector('#OP_NOTICE_AREA');
+        if(!area ){
+            //  ...
+            area = document.createElement('div');
+            area.id = 'OP_NOTICE_AREA';
+
+            //  ...
+            var body = document.querySelector('body');
+                body.insertBefore(area, body.children[0]);
+        }
+
+        //  ...
+        return area;
+    }
+
+    //  ...
     function Message(json){
         //  ...
         let h1 = document.createElement('h1');
