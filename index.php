@@ -21,7 +21,7 @@ declare(strict_types=1);
 namespace OP;
 
 //	...
-include(__DIR__.'/Notice.class.php');
+require_once(__DIR__.'/Notice.class.php');
 
 //	...
 register_shutdown_function(function(){
