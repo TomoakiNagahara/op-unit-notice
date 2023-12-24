@@ -24,6 +24,8 @@ namespace OP;
 require_once(__DIR__.'/Notice.class.php');
 
 //	...
+if( Env::isHttp() ){
+//	...
 register_shutdown_function(function(){
 	//	...
 	if( Env::isAdmin() ){
@@ -52,3 +54,4 @@ register_shutdown_function(function(){
 		};
 	};
 });
+} // if( Env::isHttp() )
