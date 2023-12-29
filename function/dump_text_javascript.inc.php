@@ -41,14 +41,15 @@ $file = CompressPath($file);
 
 //	...
 $message = Decode($notice['message']);
+$message = str_replace("\\",'\\\\',$message);
 $message = str_replace("'", "\'",$message);
 $message = str_replace('"', '\"',$message);
 $message = str_replace("\n",'\n',$message);
-$message = str_replace("\\",'\\\\',$message);
 
 //	...
 $json = json_encode($notice['backtrace']);
 
 //	...
-echo "console.error('{$file} #{$line} {$message}');".PHP_EOL;
-echo "console.log($json)";
+echo "\n";
+echo "console.error('{$file} #{$line} {$message}');\n";
+echo "console.log($json);\n";
