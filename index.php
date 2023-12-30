@@ -35,7 +35,13 @@ register_shutdown_function(function(){
 
 			/* @var $webpack \OP\UNIT\WebPack */
 			$webpack = Unit::Instantiate('Webpack');
-		//	$webpack->Js (__DIR__.'/notice');
+			/*
+			$webpack->Js (__DIR__.'/notice');
+			*/
+			$webpack->Js (__DIR__.'/notice2');
+			$webpack->Js (__DIR__.'/notice2console');
+			$webpack->Js (__DIR__.'/notice2desktop');
+			$webpack->Js (__DIR__.'/notice2footer');
 			$webpack->Css(__DIR__.'/notice');
 			$webpack->Js (__DIR__.'/notice_window');
 			$webpack->Js (__DIR__.'/notice_footer');
