@@ -37,6 +37,8 @@
 			const cell = {file: file, line: line, function: func, args: jstr};
 			table.push(cell);
 		}
+		console.group(json.message);
 		console.table(table);
+		console.groupEnd();
 	};
 })();
