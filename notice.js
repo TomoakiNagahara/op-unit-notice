@@ -10,6 +10,11 @@
 //?>
 
 //	...
+if( 'undefined' === typeof $OP ){
+	$OP = {};
+}
+
+//	...
 (function(){
 	//	Display the Notice at the bottom of the document.
 	$OP.Notice = function(div, i){
