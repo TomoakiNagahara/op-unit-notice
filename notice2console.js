@@ -31,8 +31,10 @@
 			if( type ){
 				func = clss + type + func;
 			}
-			func = func.replace(/\\\\/g, '\\');
-			func = func + '()';
+			if( func ){
+				func = func.replace(/\\\\/g, '\\');
+				func = func + '()';
+			}
 			jstr = JSON.stringify(args);
 			const cell = {file: file, line: line, function: func, args: jstr};
 			table.push(cell);
