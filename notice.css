@@ -90,7 +90,7 @@ div.OP_NOTICE td.function span.args > span.arg > span.string:after {
 
 #OP_NOTICE_AREA {
 	position: fixed;
-	z-index: 1;
+	z-index: calc(infinity);
 	opacity: 0.8;
 }
 
@@ -99,7 +99,7 @@ div.OP_NOTICE td.function span.args > span.arg > span.string:after {
 }
 
 #OP_NOTICE_AREA > div {
-	z-index: 1;
+	_z-index: 1;
 	margin:  0.5em;
 	padding: 0.5em 1em;
 	background: linear-gradient(#000, #444);
