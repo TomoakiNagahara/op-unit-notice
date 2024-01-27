@@ -19,6 +19,9 @@
  */
 (function(){
 	//	...
+	let i = 1;
+
+	//	...
 	$OP.Notice2desktop = function(json){
 		//	...
 		let message = json.message;
@@ -41,15 +44,21 @@
 			span.innerText = message;
 
 		//	...
-		div .appendChild(span);
-		area.appendChild(div);
+		setTimeout(function(){
+			div .appendChild(span);
+			area.appendChild(div);
+		}, 1000 * i);
 
 		//	...
 		setTimeout(function(){
+			//	...
 			div.classList.add('hide');
 			setTimeout(function(){
 				area.removeChild(div);
-			}, 1000 * 1);
-		}, 1000 * 3);
+			}, 1000 * 1 * i);
+		}, 1000 * 3 * i);
+
+		//	...
+		i++;
 	};
 })();
