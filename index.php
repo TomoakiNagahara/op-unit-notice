@@ -36,8 +36,11 @@ if( Env::Mime() !== 'text/html' ){
 //	...
 register_shutdown_function(function(){
 		try{
+
 			//	...
-			OP()->WebPack()->Auto('./webpack/');
+			OP()->WebPack()->Auto('./webpack/notice2*.js');
+			OP()->WebPack()->Auto('./webpack/notice4*.css');
+
 		}catch( \Exception $e ){
 			//	...
 			echo $e->getMessage();
