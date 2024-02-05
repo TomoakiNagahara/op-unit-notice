@@ -35,7 +35,7 @@
 				func = func.replace(/\\\\/g, '\\');
 				func = func + '()';
 			}
-			jstr = JSON.stringify(args);
+			jstr = (args === null) ? null: JSON.stringify(args);
 			const cell = {file: file, line: line, function: func, args: jstr};
 			table.push(cell);
 		}
