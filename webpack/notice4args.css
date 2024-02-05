@@ -1,0 +1,77 @@
+
+/** op-unit-notice:/webpack/notice4args.css
+ *
+ * @created   2024-02-06
+ * @version   1.0
+ * @package   op-unit-notice
+ * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
+ * @copyright Tomoaki Nagahara All right reserved.
+ */
+
+div.OP_NOTICE td.function span.args:before {
+	content: '(';
+}
+
+div.OP_NOTICE td.function span.args:after {
+	content: ')';
+}
+
+div.OP_NOTICE td.function span.args > span.arg > span.string {
+	color: '#999';
+}
+
+div.OP_NOTICE td.function span.args > span.arg > span.string:before,
+div.OP_NOTICE td.function span.args > span.arg > span.string:after {
+	content: '"';
+}
+
+span.args > span.arg:not(:last-child):after {
+	margin-right: 0.25em;
+	content: ',';
+}
+
+span.args > span.arg > span.quote:before,
+span.args > span.arg > span.quote:after {
+	content: '"';
+}
+
+span.args > span.arg > span.boolean.true {
+	color: var(--root-color-true);
+}
+
+span.args > span.arg > span.null,
+span.args > span.arg > span.boolean.false {
+	color: var(--root-color-false);
+}
+
+span.args > span.arg > span.number {
+	font-style: italic;
+}
+
+span.args > span.arg > span.integer {
+	font-style: italic;
+}
+
+span.args > span.arg > span.double {
+	font-style: italic;
+}
+
+span.args > span.arg > span.array {
+	color: var(--root-color-purple);
+}
+
+span.args > span.arg > span.object {
+	color: var(--root-color-purple);
+}
+
+span.args > span.arg > span.string {
+	color: var(--root-color-text);
+}
+
+span.args > span.arg > span.string > span.meta {
+	color: var(--args-meta-color);
+}
+
+span.args > span.arg > span.string > span.meta.space {
+	text-decoration: underline;
+}
