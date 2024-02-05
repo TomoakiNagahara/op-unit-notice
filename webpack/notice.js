@@ -1,4 +1,4 @@
-//<?php
+
 /** op-unit-notice:/notice.js
  *
  * @created   2017-07-28
@@ -7,7 +7,6 @@
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright Tomoaki Nagahara All right reserved.
  */
-//?>
 
 //	...
 if( 'undefined' === typeof $OP ){
