@@ -24,11 +24,17 @@ namespace OP;
 require_once(__DIR__.'/Notice.class.php');
 
 //	...
-if( Env::isHttp() ){
+if( Env::isAdmin() !== true ){
+	return true;
+}
+
+//	...
+if( Env::Mime() !== 'text/html' ){
+	return true;
+}
+
 //	...
 register_shutdown_function(function(){
-	//	...
-	if( Env::isAdmin() ){
 		try{
 			//	...
 			Unit::Load('webpack');
@@ -61,6 +67,4 @@ register_shutdown_function(function(){
 			include(__DIR__.'/notice.css');
 			echo '</style>';
 		};
-	};
 });
-} // if( Env::isHttp() )
