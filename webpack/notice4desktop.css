@@ -1,0 +1,38 @@
+
+/** op-unit-notice:/webpack/notice4desktop.css
+ *
+ * @created   2024-02-06
+ * @version   1.0
+ * @package   op-unit-notice
+ * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
+ * @copyright Tomoaki Nagahara All right reserved.
+ */
+
+#OP_NOTICE_AREA {
+	position: fixed;
+	z-index: calc(infinity);
+	opacity: 0.8;
+}
+
+#OP_NOTICE_AREA > * {
+	transition: all 300ms 0s ease;
+}
+
+#OP_NOTICE_AREA > div {
+	margin:  0.5em;
+	padding: 0.5em 1em;
+	background: linear-gradient(#000, #444);
+	color: white;
+	border-radius: 0.3em;
+}
+
+#OP_NOTICE_AREA > div span {
+	font-size: 9pt;
+}
+
+#OP_NOTICE_AREA > div.hide {
+	height: 0;
+	font-size: 0;
+	color: #000;
+	opacity: 0;
+}
