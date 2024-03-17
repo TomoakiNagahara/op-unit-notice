@@ -52,7 +52,9 @@ $message = str_replace("\\",'\\\\',$message);
 echo "/*\n";
 echo "{$file} #{$line}\n";
 echo "{$message}\n";
+\OP\DebugBacktrace::Auto($notice['backtrace']);
 echo "*/\n";
+
 ?>
 body:before {
 	content: "<?= $_SERVER['REQUEST_URI'] ?>: <?= $message ?>";
