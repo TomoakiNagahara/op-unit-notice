@@ -36,6 +36,10 @@ echo "{$message} | {$created} (count: $count)".PHP_EOL;
 echo PHP_EOL;
 
 //	...
+\OP\DebugBacktrace::Auto($notice['backtrace']);
+return;
+
+//	...
 foreach( $notice['backtrace'] as $i => $trace ){
 	echo str_pad($i, 2, ' ', STR_PAD_LEFT);
 	echo ': ';
