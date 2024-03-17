@@ -15,6 +15,6 @@ namespace OP;
 
 //	...
 return [
-	'ci' => true,
-	'cd' => true,
+	'ci' => true, // What and Where are use?
+	'cd' => true, // What and Where are use?
 ];
