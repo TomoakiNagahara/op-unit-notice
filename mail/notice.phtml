@@ -1,10 +1,9 @@
 <?php
-/**
- * unit-notice:/mail/notice.phtml
+/** op-unit-notice:/mail/notice.phtml
  *
  * @created   2016-11-30
  * @version   1.0
- * @package   unit-notice
+ * @package   op-unit-notice
  * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
  * @copyright 2016 (C) Tomoaki Nagahara All right reserved.
  */
@@ -50,10 +49,12 @@ $referer	 = $_SERVER['HTTP_REFERER']    ?? null;
 $blacklist   = null;
 
 //	Information of Server.
+$os			 = php_uname(); // PHP_OS;
+$software	 = $_SERVER['SERVER_SOFTWARE'];
 $scheme      = $_SERVER['REQUEST_SCHEME']  ?? '(empty)';
 $host		 = $_SERVER['HTTP_HOST']       ?? null;
-$url		 = $_SERVER['REQUEST_URI']     ?? null;
-$url		 = $scheme .'://'. $host . $url;
+$uri		 = $_SERVER['REQUEST_URI']     ?? null;
+$url		 = $scheme .'://'. $host . $uri;
 
 //	If name resolve fail.
 if( $ip === $host ){
@@ -101,6 +102,8 @@ if(!ob_start()){
 		<tr><th> Timestamp </th><td><?= $timestamp ?></td></tr>
 		<tr><th> Visitor   </th><td><?= $visitor   ?></td></tr>
 		<tr><th> UserAgent </th><td><?= $ua        ?></td></tr>
+		<tr><th> OS        </th><td><?= $os        ?></td></tr>
+		<tr><th> Software  </th><td><?= $software  ?></td></tr>
 		<tr><th> URL       </th><td><?= $url       ?></td></tr>
 		<tr><th> Referer   </th><td><?= $referer   ?></td></tr>
 		<tr><th> Blacklist </th><td><?= $blacklist ?></td></tr>
