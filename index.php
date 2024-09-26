@@ -40,6 +40,8 @@ register_shutdown_function(function(){
 			//	...
 			OP()->WebPack()->Auto('./webpack/notice2*.js');
 			OP()->WebPack()->Auto('./webpack/notice4*.css');
+			OP()->WebPack()->Auto('asset:/webpack/js/op.js');
+			OP()->WebPack()->Auto('asset:/webpack/js/path.js');
 
 		}catch( \Exception $e ){
 			//	...
