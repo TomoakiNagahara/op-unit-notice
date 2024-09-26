@@ -22,12 +22,15 @@
 		//	...
 		let table = [];
 		for( let trace of json.backtrace ){
-			const file = trace.file   ?? null;
+			let   file = trace.file   ?? null;
 			const line = trace.line   ?? null;
 			const type = trace.type   ?? null;
 			const args = trace.args   ?? null;
 			const clss = trace.class  ?? null;
 			let func = trace.function ?? null;
+			if( file ){
+				file = $OP.Path.Compress(file);
+			}
 			if( type ){
 				func = clss + type + func;
 			}
