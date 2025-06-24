@@ -13,12 +13,6 @@
  */
 namespace OP\UNIT\NOTICE;
 
-/** use
- *
- */
-use function OP\Decode;
-use function OP\CompressPath;
-
 /* @var $notice array */
 if( false ){
 	$notice = [];
@@ -34,13 +28,11 @@ if(!$line = $notice['backtrace'][0]['line'] ?? null ){
 	$line = $notice['backtrace'][1]['line'] ?? null;
 };
 
-/*
 //	...
-$file = CompressPath($file);
-*/
+$file = OP()->Path($file);
 
 //	...
-$message = Decode($notice['message']);
+$message = OP()->Decode($notice['message']);
 $message = str_replace("\\",'\\\\',$message);
 $message = str_replace("'", "\'",$message);
 $message = str_replace('"', '\"',$message);
