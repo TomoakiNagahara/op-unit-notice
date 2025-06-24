@@ -19,7 +19,6 @@ namespace OP\UNIT;
 use OP\OP_CORE;
 use OP\IF_UNIT;
 use OP\OP_CI;
-use OP\Env;
 
 /**	Notice
  *
@@ -44,7 +43,7 @@ class Notice implements IF_UNIT
 		//	...
 		while( $notice = \OP\Notice::Get() ){
 			//	...
-			if( Env::isAdmin() ){
+			if( OP()->isAdmin() ){
 				require_once(__DIR__.'/function/dump.php');
 				NOTICE\FUNCTIONS\Dump($notice);
 			}else{
