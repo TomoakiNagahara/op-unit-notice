@@ -18,8 +18,8 @@ declare(strict_types=1);
  */
 namespace OP;
 
-//	...
-$ci = new CI();
+/* @var $ci \OP\UNIT\CI\CI_Config */
+$ci = OP::Unit('CI')::Config();
 
 //	Template
 $args   = 'ci.txt';
@@ -27,4 +27,4 @@ $result = 'OK';
 $ci->Set('Template', $result, $args);
 
 //	...
-return $ci->GenerateConfig();
+return $ci->Get();
