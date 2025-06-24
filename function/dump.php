@@ -16,7 +16,6 @@ namespace OP\UNIT\NOTICE\FUNCTIONS;
 /** use
  *
  */
-use OP\Env;
 use function OP\Json;
 
 /** Display to dump of notice.
@@ -28,7 +27,7 @@ use function OP\Json;
 function Dump( $notice )
 {
 	//	...
-	switch( Env::Mime() ?? 'text/html' ){
+	switch( OP()->Mime() ?? 'text/html' ){
 		case 'text/html':
 			//	Escape is done with self::Shutdown().
 			//	$notice = Escape($notice);
