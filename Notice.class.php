@@ -17,7 +17,6 @@ namespace OP\UNIT;
  *
  */
 use OP\OP_CORE;
-use OP\OP_UNIT;
 use OP\IF_UNIT;
 use OP\OP_CI;
 use OP\Env;
@@ -35,7 +34,7 @@ class Notice implements IF_UNIT
 	/**	trait.
 	 *
 	 */
-	use OP_CORE, OP_UNIT, OP_CI;
+	use OP_CORE, OP_CI;
 
 	/**	Callback of app shutdown.
 	 *
