@@ -13,11 +13,6 @@
  */
 namespace OP\UNIT\NOTICE\FUNCTIONS;
 
-/** use
- *
- */
-use function OP\Json;
-
 /** Display to dump of notice.
  *
  * @created
@@ -29,9 +24,7 @@ function Dump( $notice )
 	//	...
 	switch( OP()->Mime() ?? 'text/html' ){
 		case 'text/html':
-			//	Escape is done with self::Shutdown().
-			//	$notice = Escape($notice);
-			Json($notice, 'OP_NOTICE');
+			OP()->Json($notice, 'OP_NOTICE');
 			break;
 
 		case 'text/css':
