@@ -41,7 +41,7 @@ class Notice implements IF_UNIT
 	function Auto()
 	{
 		//	...
-		while( $notice = \OP\Notice::Get() ){
+		while( $notice = \OP\Error::Get() ){
 			//	...
 			if( OP()->isAdmin() ){
 				require_once(__DIR__.'/function/dump.php');
