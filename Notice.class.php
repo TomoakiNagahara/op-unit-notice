@@ -17,8 +17,8 @@ namespace OP\UNIT;
  *
  */
 use OP\OP_CORE;
-use OP\IF_UNIT;
 use OP\OP_CI;
+use OP\IF_NOTICE;
 
 /**	Notice
  *
@@ -28,7 +28,7 @@ use OP\OP_CI;
  * @author     Tomoaki Nagahara
  * @copyright  Tomoaki Nagahara All right reserved.
  */
-class Notice implements IF_UNIT
+class Notice implements IF_NOTICE
 {
 	/**	trait.
 	 *
