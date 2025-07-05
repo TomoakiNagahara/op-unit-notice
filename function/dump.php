@@ -24,7 +24,8 @@ function Dump( $notice )
 	//	...
 	switch( OP()->Mime() ?? 'text/html' ){
 		case 'text/html':
-			OP()->Json($notice, 'OP_NOTICE');
+			require_once(_ROOT_CORE_.'/function/Json.php');
+			\OP\Json($notice, 'OP_NOTICE');
 			break;
 
 		case 'text/css':
