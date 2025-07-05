@@ -24,12 +24,12 @@ namespace OP;
 require_once(__DIR__.'/Notice.class.php');
 
 //	...
-if( Env::isAdmin() !== true ){
+if( OP::isAdmin() !== true ){
 	return true;
 }
 
 //	...
-if( Env::Mime() !== 'text/html' ){
+if( OP::Mime() !== 'text/html' ){
 	return true;
 }
 
@@ -38,10 +38,10 @@ register_shutdown_function(function(){
 		try{
 
 			//	...
-			OP()->WebPack()->Auto('./webpack/notice2*.js');
-			OP()->WebPack()->Auto('./webpack/notice4*.css');
-			OP()->WebPack()->Auto('asset:/webpack/js/op.js');
-			OP()->WebPack()->Auto('asset:/webpack/js/path.js');
+			OP()->Unit()->WebPack()->Auto('./webpack/notice2*.js');
+			OP()->Unit()->WebPack()->Auto('./webpack/notice4*.css');
+			OP()->Unit()->WebPack()->Auto('asset:/webpack/js/op.js');
+			OP()->Unit()->WebPack()->Auto('asset:/webpack/js/path.js');
 
 		}catch( \Exception $e ){
 			//	...
