@@ -25,7 +25,7 @@ if( false ){
 }
 
 //	...
-$app_root= RootPath('app');
+$app_root= _ROOT_APP_;
 $count   = $notice['count'];
 $created = $notice['created'];
 $message = $notice['message'];
