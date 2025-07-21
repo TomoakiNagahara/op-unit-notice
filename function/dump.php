@@ -22,7 +22,10 @@ namespace OP\UNIT\NOTICE\FUNCTIONS;
 function Dump( $notice )
 {
 	//	...
-	switch( OP()->Mime() ?? 'text/html' ){
+	$mime = OP()->isHttp() ? OP()->MIME(): 'text/plain';
+
+	//	...
+	switch( $mime ){
 		case 'text/html':
 			require_once(_ROOT_CORE_.'/function/Json.php');
 			\OP\Json($notice, 'OP_NOTICE');
