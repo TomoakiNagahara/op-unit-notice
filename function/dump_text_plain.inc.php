@@ -36,7 +36,7 @@ echo "{$message} | {$created} (count: $count)".PHP_EOL;
 echo PHP_EOL;
 
 //	If MIME is empty.
-if(!OP()->MIME() ){
+if( OP()->isHttp() and empty(OP()->MIME()) ){
 	header("content-type: text/plain");
 }
 
