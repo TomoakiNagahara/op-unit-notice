@@ -35,6 +35,11 @@ echo PHP_EOL;
 echo "{$message} | {$created} (count: $count)".PHP_EOL;
 echo PHP_EOL;
 
+//	If MIME is empty.
+if(!OP()->MIME() ){
+	header("content-type: text/plain");
+}
+
 //	...
 \OP\DebugBacktrace::Auto($notice['backtrace']);
 return;
