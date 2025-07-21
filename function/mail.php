@@ -81,7 +81,7 @@ function Mail( $notice )
 	}
 
 	//	Get message.
-	$subject = Decode($notice['message']);
+	$subject = OP()->Decode($notice['message']);
 
 	//	...
 	$mail = new \OP\EMail();
