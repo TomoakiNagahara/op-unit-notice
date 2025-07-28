@@ -83,6 +83,7 @@ function Mail( $notice )
 	//	Get message.
 	$subject = OP()->Decode($notice['message']);
 
+	/*
 	//	...
 	$mail = new \OP\EMail();
 	$mail->From($from);
@@ -90,6 +91,8 @@ function Mail( $notice )
 	$mail->Subject($subject);
 	$mail->Content($content, 'text/html');
 	$mail->Send();
+	*/
+	OP()->Mail($to, $subject, $content, ['from'=>$from, 'mime'=>'text/html']);
 
 	//	Avoid sent the same email.
 	if( function_exists('apcu_add') ){
